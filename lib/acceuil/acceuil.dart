@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/actualites/actualites.dart';
+import 'package:my_app/conseils/conseil.dart';
 import 'package:my_app/menu/menu.dart';
 import 'package:my_app/contact/contact.dart'; // Ajoutez cet import
 import 'package:my_app/acceuil/widget/categorie.dart';
+import 'package:my_app/numurgence/numurgence.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({super.key});
@@ -177,9 +179,15 @@ class _AccueilState extends State<Accueil> {
           if (index == 3) {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Contact()));
-          } else if (index == 2) {
+          } else if (index == 1) {
             Navigator.push(
                 context, MaterialPageRoute(builder: (context) => Actualites()));
+          } else if (index == 4) {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Numurgence()));
+          } else if (index == 2) {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Conseil()));
           }
         },
         backgroundColor: Colors.white,
