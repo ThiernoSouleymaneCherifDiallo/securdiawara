@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'articledetail.dart';
 
 class Actualites extends StatefulWidget {
   const Actualites({super.key});
@@ -11,22 +12,22 @@ class _ActualitesState extends State<Actualites> {
   // Liste d'exemple des actualités
   final List<Map<String, String>> actualites = [
     {
-      "titre": "Portez plainte en ligne via internet",
-      "contenu":
+      "title": "Portez plainte en ligne via internet",
+      "content":
           "Expérimenté depuis le mois de décembre 2023 en Gironde, ce dispositif gratuit est désormais disponible sur l'ensemble du territoire national. La plainte en ligne permet de porter plainte via une démarche entièrement dématérialisée, sans se déplacer dans une brigade de gendarmerie ou un commissariat de police.",
-      "temps": "il y a 1M",
+      "category": "GN - ACTU NATIONALE",
     },
     {
-      "titre": "Nouvelle loi sur la cybersécurité",
-      "contenu":
-          "Une nouvelle loi visant à renforcer la cybersécurité a été adoptée, offrant une meilleure protection contre les attaques en ligne pour les utilisateurs.",
-      "temps": "il y a 3H",
+      "title": "Nouvelle application pour signaler les urgences",
+      "content":
+          "Lancement d’une nouvelle application mobile permettant aux citoyens de signaler des urgences en temps réel. Ce service innovant vise à renforcer l’efficacité des interventions et à améliorer la sécurité publique dans les zones urbaines et rurales.",
+      "category": "GN - ACTU INTERNATIONALE",
     },
     {
-      "titre": "Campagne de vaccination nationale",
-      "contenu":
-          "La campagne de vaccination contre la grippe saisonnière a débuté cette semaine. Les centres de santé invitent les citoyens à se faire vacciner.",
-      "temps": "il y a 2J",
+      "title": "Mise en place d’un système d’alerte dans les écoles",
+      "content":
+          "Un nouveau dispositif d'alerte vient d'être installé dans plusieurs établissements scolaires pour renforcer la sécurité des élèves. Ce système permet d’envoyer des notifications instantanées aux autorités locales en cas de menace ou d’incident.",
+      "category": "GN - ACTU RÉGIONALE",
     },
   ];
 
@@ -34,67 +35,76 @@ class _ActualitesState extends State<Actualites> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Actualités"),
+        title: Text("Liste des articles"),
         backgroundColor: Colors.blue,
       ),
       body: ListView.builder(
         itemCount: actualites.length,
         itemBuilder: (context, index) {
-          final actualite = actualites[index];
+          final actu = actualites[index];
           return Padding(
-            padding:
-                const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.grey[900],
-                borderRadius: BorderRadius.circular(10.0),
+            padding: const EdgeInsets.all(10.0),
+            child: Card(
+              elevation: 3,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
               ),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    width: 5.0,
-                    height: double.infinity,
-                    color: Colors.blue, // Couleur bleue de la bande
-                  ),
-                  Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.all(12.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            actualite["titre"]!,
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 8.0),
-                          Text(
-                            actualite["contenu"]!,
-                            style: TextStyle(
-                              color: Colors.grey[300],
-                              fontSize: 14.0,
-                            ),
-                          ),
-                          SizedBox(height: 10.0),
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: Text(
-                              actualite["temps"]!,
-                              style: TextStyle(
-                                color: Colors.grey[500],
-                                fontSize: 12.0,
-                              ),
-                            ),
-                          ),
-                        ],
+              child: Padding(
+                padding: const EdgeInsets.all(15.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      actu["category"]!,
+                      style: TextStyle(
+                        color: Colors.blueAccent,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 14,
                       ),
                     ),
-                  ),
-                ],
+                    SizedBox(height: 8),
+                    Text(
+                      actu["title"]!,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Text(
+                      actu["content"]!.substring(0, 100) + "...", // Aperçu
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black87,
+                      ),
+                    ),
+                    SizedBox(height: 10),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: TextButton(
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => ArticleDetailPage(
+                                title: actu["title"]!,
+                                content: actu["content"]!,
+                                category: actu["category"]!,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Text(
+                          "Lire plus",
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );

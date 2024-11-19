@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'acceuil/acceuil.dart'; // Remplacez "myapp" par le nom exact de votre package
+import 'acceuil/acceuil.dart';
 
 void main() {
   runApp(const MyApp());
