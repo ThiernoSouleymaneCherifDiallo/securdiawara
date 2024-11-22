@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:my_app/actualites/actualites.dart';
 import 'package:my_app/conseils/conseil.dart';
-import 'package:my_app/menu/menu.dart';
-import 'package:my_app/contact/contact.dart'; // Ajoutez cet import
+import 'package:my_app/contact/contact.dart';
 import 'package:my_app/acceuil/widget/categorie.dart';
 import 'package:my_app/numurgence/numurgence.dart';
+import 'package:my_app/acceuil/widget/menu.dart';
 
 class Accueil extends StatefulWidget {
   const Accueil({super.key});
