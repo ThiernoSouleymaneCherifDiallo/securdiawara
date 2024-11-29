@@ -32,6 +32,7 @@ dependencies:
     sdk: flutter
 
   image_picker: ^0.8.7+3 #package pour la camera..
+  animate_do: ^2.0.0 #package pour les animations
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
