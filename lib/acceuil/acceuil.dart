@@ -25,10 +25,14 @@ class _AccueilState extends State<Accueil> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF094FC6),
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.menu, color: Colors.white),
-          onPressed: () {
-            Scaffold.of(context).openDrawer();
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu, color: Colors.white),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+            );
           },
         ),
         title: const Text(
@@ -152,7 +156,7 @@ class _AccueilState extends State<Accueil> {
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(horizontal: 20),
-                      child: Divider(height: 40),
+                      child: Divider(height: 40, color: Colors.grey),
                     ),
                     _buildDrawerItem(
                       icon: Icons.info_outline,
@@ -636,6 +640,7 @@ class _AccueilState extends State<Accueil> {
         style: const TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w500,
+          color: Colors.black87,
         ),
       ),
       trailing: const Icon(
